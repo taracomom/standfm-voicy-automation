@@ -1,0 +1,10 @@
+--- Running voicy_scraper.py test ---
+Using test URL: https://voicy.jp/channel/821320
+DEBUG: Checkpoint 1 - Before attempting to print fetch message
+Attempting to fetch the latest episode URL from: https://voicy.jp/channel/821320
+DEBUG: Checkpoint 2 - After attempting to print fetch message, before calling function
+DEBUG: Checkpoint 3 - Returned from get_latest_voicy_episode_url. latest_url type: <class 'str'>, value: 'https://voicy.jp/channel/821320/6768811'
+
+Successfully fetched latest Voicy episode URL:
+  https://voicy.jp/channel/821320/6768811
+--- voicy_scraper.py test finished ---

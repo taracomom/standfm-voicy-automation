@@ -1,0 +1,11 @@
+--- Running simple_print_test.py ---
+Using default test URL: https://voicy.jp/channel/1343
+You can set a different URL via the TEST_VOICY_CHANNEL_URL environment variable.
+DEBUG: Checkpoint 1 - Before attempting to print fetch message
+Attempting to fetch the latest episode URL from: https://voicy.jp/channel/1343
+DEBUG: Checkpoint 2 - After attempting to print fetch message, before calling function
+DEBUG: Checkpoint 3 - Skipped call to get_latest_voicy_episode_url
+
+Successfully fetched latest Voicy episode URL:
+  dummy_url_for_testing_flow
+--- simple_print_test.py finished ---

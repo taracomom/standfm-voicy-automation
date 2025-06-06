@@ -1,0 +1,30 @@
+
+--- Logging for get_latest_voicy_episode_url call (2025-06-07 00:20:52) --- 
+Target Voicy Channel URL: https://voicy.jp/channel/1343
+DEBUG: ChromeDriver executable path: C:\Users\owner\CascadeProjects\standfm-voicy-automation\src\drivers\chromedriver.exe
+DEBUG: ChromeDriver service log output will be configured to: C:\Users\owner\CascadeProjects\standfm-voicy-automation\chromedriver.log
+DEBUG: ChromeService object initialized.
+DEBUG: webdriver.Chrome initialized.
+DEBUG: Attempting to driver.get URL: https://voicy.jp/channel/1343
+DEBUG: driver.get call completed for URL: https://voicy.jp/channel/1343
+DEBUG: WebDriverWait initialized. Waiting for element...
+DEBUG: Latest episode element found: True
+DEBUG: Episode URL found: https://voicy.jp/channel/1343/104570
+--- End of get_latest_voicy_episode_url call log (Success) ---
+DEBUG: Quitting webdriver.
+DEBUG: Webdriver quit.
+
+--- Logging for get_latest_voicy_episode_url call (2025-06-07 00:32:31) --- 
+Target Voicy Channel URL: https://voicy.jp/channel/821320
+DEBUG: ChromeDriver executable path: C:\Users\owner\CascadeProjects\standfm-voicy-automation\src\drivers\chromedriver.exe
+DEBUG: ChromeDriver service log output will be configured to: C:\Users\owner\CascadeProjects\standfm-voicy-automation\chromedriver.log
+DEBUG: ChromeService object initialized.
+DEBUG: webdriver.Chrome initialized.
+DEBUG: Attempting to driver.get URL: https://voicy.jp/channel/821320
+DEBUG: driver.get call completed for URL: https://voicy.jp/channel/821320
+DEBUG: WebDriverWait initialized. Waiting for element...
+DEBUG: Latest episode element found: True
+DEBUG: Episode URL found: https://voicy.jp/channel/821320/6768811
+--- End of get_latest_voicy_episode_url call log (Success) ---
+DEBUG: Quitting webdriver.
+DEBUG: Webdriver quit.
