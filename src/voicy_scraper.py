@@ -134,6 +134,8 @@ if __name__ == '__main__':
         if latest_url:
             print(f"\nSuccessfully fetched latest Voicy episode URL:", flush=True, file=f_scraper_out)
             print(f"  {latest_url}", flush=True, file=f_scraper_out)
+            # Print the URL to standard output for rss_monitor.py to capture
+            print(f"VOICY_EPISODE_URL:{latest_url}")
         else:
             print(f"\nFailed to fetch the latest Voicy episode URL.", flush=True, file=f_scraper_out)
             print("Please ensure:", flush=True, file=f_scraper_out)

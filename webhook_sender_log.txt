@@ -1,0 +1,28 @@
+2025-06-07 09:29:16,690 - INFO - --- Running webhook_sender.py in test mode ---
+2025-06-07 09:29:16,690 - INFO - Sending Voicy URL to Make.com webhook: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:29:16,690 - INFO - Payload: {"voicy_url": "https://voicy.jp/channel/xxxx/yyyyyyy_test_episode", "timestamp": "2025-06-07 00:29:16 UTC"}
+2025-06-07 09:29:17,812 - ERROR - Failed to send data to webhook: 400 Client Error: Bad Request for url: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:29:17,822 - INFO - --- Finished webhook_sender.py test mode ---
+2025-06-07 09:33:07,818 - INFO - --- Running webhook_sender.py in test mode ---
+2025-06-07 09:33:07,819 - INFO - Sending Voicy URL to Make.com webhook: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:33:07,819 - INFO - Payload: {"voicy_episode_url": "https://voicy.jp/channel/xxxx/yyyyyyy_test_episode", "timestamp": "2025-06-07 00:33:07 UTC"}
+2025-06-07 09:33:08,767 - ERROR - Failed to send data to webhook: 400 Client Error: Bad Request for url: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:33:08,768 - INFO - --- Finished webhook_sender.py test mode ---
+2025-06-07 09:37:57,601 - INFO - Using temporarily hardcoded test_voicy_url: https://voicy.jp/channel/999/12345
+2025-06-07 09:37:57,601 - INFO - --- Running webhook_sender.py in test mode ---
+2025-06-07 09:37:57,602 - INFO - Using Make.com Webhook URL: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:37:57,602 - INFO - Using Voicy Episode URL: https://voicy.jp/channel/999/12345
+2025-06-07 09:37:57,602 - INFO - Sending Voicy URL to Make.com webhook: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:37:57,603 - INFO - Payload: {"voicy_episode_url": "https://voicy.jp/channel/999/12345", "timestamp": "2025-06-07 00:37:57 UTC"}
+2025-06-07 09:37:58,739 - INFO - Successfully sent data to webhook. Status code: 200
+2025-06-07 09:37:58,741 - INFO - Test data sent successfully.
+2025-06-07 09:37:58,741 - INFO - --- Finished webhook_sender.py test mode ---
+2025-06-07 09:40:11,286 - INFO - Using temporarily hardcoded test_voicy_url: https://voicy.jp/channel/999/12345
+2025-06-07 09:40:11,287 - INFO - --- Running webhook_sender.py in test mode ---
+2025-06-07 09:40:11,287 - INFO - Using Make.com Webhook URL: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:40:11,287 - INFO - Using Voicy Episode URL: https://voicy.jp/channel/999/12345
+2025-06-07 09:40:11,287 - INFO - Sending Voicy URL to Make.com webhook: https://hook.us1.make.com/gn9mezrqf5jsbnfuk2pjrrmbqrxrf97y
+2025-06-07 09:40:11,287 - INFO - Payload: {"voicy_episode_url": "https://voicy.jp/channel/999/12345", "timestamp": "2025-06-07 00:40:11 UTC"}
+2025-06-07 09:40:12,324 - INFO - Successfully sent data to webhook. Status code: 200
+2025-06-07 09:40:12,325 - INFO - Test data sent successfully.
+2025-06-07 09:40:12,326 - INFO - --- Finished webhook_sender.py test mode ---

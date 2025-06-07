@@ -3,6 +3,7 @@ import subprocess
 import os
 import json
 from datetime import datetime
+from webhook_sender import send_to_make_webhook # Import the new function
 
 # Configuration
 STANDFM_RSS_URL = "https://stand.fm/rss/5fba3d73c64654659098efa4"
@@ -56,8 +57,9 @@ def save_last_processed_guid(guid):
     except Exception as e:
         log_message(f"Error saving state file {STATE_FILE_PATH}: {e}")
 
-def run_voicy_scraper():
+def run_voicy_scraper() -> str | None:  # Modified to return the Voicy URL or None
     log_message(f"Attempting to run Voicy scraper for channel: {VOICY_CHANNEL_URL}")
+    fetched_voicy_url = None  # Initialize here
     try:
         env = os.environ.copy()
         env["TEST_VOICY_CHANNEL_URL"] = VOICY_CHANNEL_URL
@@ -83,6 +85,12 @@ def run_voicy_scraper():
         
         if stdout:
             log_message(f"Voicy scraper STDOUT:\n{stdout.strip()}")
+            # Try to find the Voicy URL in stdout
+            for line in stdout.strip().split('\n'):
+                if line.startswith("VOICY_EPISODE_URL:"):
+                    fetched_voicy_url = line.split("VOICY_EPISODE_URL:", 1)[1].strip()
+                    log_message(f"Extracted Voicy URL from stdout: {fetched_voicy_url}")
+                    break
         if stderr:
             log_message(f"Voicy scraper STDERR:\n{stderr.strip()}")
 
@@ -93,11 +101,15 @@ def run_voicy_scraper():
                 log_message(f"Content of {scraper_main_log} after run:\n{f_log.read().strip()}")
         else:
             log_message(f"{scraper_main_log} not found after scraper run.")
+        
+        return fetched_voicy_url # Return the extracted URL or None (if not found in stdout)
 
     except subprocess.TimeoutExpired:
         log_message("Voicy scraper timed out after 5 minutes.")
+        return None # Ensure a return path if timeout occurs
     except Exception as e:
         log_message(f"An error occurred while running Voicy scraper: {e}")
+        return None # Ensure a return path if an exception occurs
 
 def main():
     log_message("--- RSS Monitor Started ---")
@@ -135,8 +147,21 @@ def main():
     if latest_guid:
         if latest_guid != last_processed_guid:
             log_message(f"New episode detected! GUID: {latest_guid} (Title: {latest_title}). Previous GUID was: {last_processed_guid}.")
-            run_voicy_scraper()
-            save_last_processed_guid(latest_guid) # Save new GUID only after successful processing or attempt
+            voicy_url = run_voicy_scraper()
+            if voicy_url:
+                log_message(f"Successfully obtained Voicy URL: {voicy_url}")
+                make_webhook_url = os.environ.get("MAKE_WEBHOOK_URL")
+                if make_webhook_url:
+                    log_message(f"Attempting to send Voicy URL to Make.com webhook.")
+                    if send_to_make_webhook(make_webhook_url, voicy_url):
+                        log_message("Successfully sent Voicy URL to Make.com webhook.")
+                    else:
+                        log_message("Failed to send Voicy URL to Make.com webhook.")
+                else:
+                    log_message("MAKE_WEBHOOK_URL environment variable not set. Skipping webhook call.")
+            else:
+                log_message("Failed to obtain Voicy URL from scraper.")
+            save_last_processed_guid(latest_guid) # Save new GUID regardless of webhook outcome, but after scraper attempt
         else:
             log_message("No new episode. Latest GUID matches the last processed GUID.")
     else:
