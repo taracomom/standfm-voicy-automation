@@ -52,11 +52,21 @@ def get_latest_voicy_episode_url(voicy_channel_url: str) -> str | None:
             print(f"DEBUG: ChromeDriver service log output will be configured to: {chromedriver_service_log_path}", flush=True, file=f_custom_log)
 
             if os.environ.get("GITHUB_ACTIONS") == "true":
-                # In GitHub Actions, chromedriver should be in PATH
-                print(f"INFO: Running in GitHub Actions, using 'chromedriver' from PATH.", flush=True, file=f_custom_log)
+                chromedriver_executable_path = "/usr/local/bin/chromedriver"
+                print(f"INFO: Running in GitHub Actions, using ChromeDriver path: {chromedriver_executable_path}", flush=True, file=f_custom_log)
+                if not os.path.exists(chromedriver_executable_path):
+                    print(f"ERROR: ChromeDriver not found at {chromedriver_executable_path}! Checking /usr/local/bin:", flush=True, file=f_custom_log)
+                    try:
+                        if os.path.exists("/usr/local/bin"):
+                            usr_local_bin_contents = os.listdir("/usr/local/bin")
+                            print(f"Contents of /usr/local/bin: {usr_local_bin_contents}", flush=True, file=f_custom_log)
+                        else:
+                            print("/usr/local/bin directory does not exist.", flush=True, file=f_custom_log)
+                    except Exception as e:
+                        print(f"Could not list /usr/local/bin: {e}", flush=True, file=f_custom_log)
                 service = ChromeService(
-                    executable_path="chromedriver",
-                    log_output=chromedriver_service_log_path, # Service logs to its own file
+                    executable_path=chromedriver_executable_path,
+                    log_output=chromedriver_service_log_path,
                     service_args=["--verbose"]
                 )
             else:
